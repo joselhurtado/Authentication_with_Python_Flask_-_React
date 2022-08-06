@@ -17,6 +17,7 @@ api = Blueprint('api', __name__)
 @api.route("/token", methods=["POST"])
 def create_token():
     email = request.json.get("email", None)
+    print(email, "email")
     password = request.json.get("password", None)
     if email != "test" or password != "test":
         return jsonify({"msg": "Bad email or password"}), 401
