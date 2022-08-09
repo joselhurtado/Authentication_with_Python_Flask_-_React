@@ -1,4 +1,4 @@
-# WebApp boilerplate with React JS and Flask API
+# WebApp JWT_Auth_with_Python_Flask_React
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-flask-hello.git)
 
