@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import "../../styles/home.css";
 
 export const Login = () => {
@@ -57,9 +58,11 @@ export const Login = () => {
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
-          <div className="btn btn-primary" onClick={handleClick}>
-            Login
-          </div>
+          <Link to={`/protected`} className="btn btn-primary">
+            <div onClick={handleClick}>
+              Login
+            </div>
+          </Link>
         </div>
       )}
     </div>
