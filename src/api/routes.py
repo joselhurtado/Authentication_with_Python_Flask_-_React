@@ -12,7 +12,7 @@ from flask_jwt_extended import jwt_required
 # Create Flask app
 api = Blueprint('api', __name__)
 
-# Create a route to authenticate your users (Create a Token) and return JWTs. The
+# Create a route to authenticate your users (Create a Token) and return JWTs.
 # create_access_token() function is used to actually generate the JWT.
 @api.route("/token", methods=["POST"])
 def create_token():
@@ -24,3 +24,5 @@ def create_token():
 
     access_token = create_access_token(identity=email)
     return jsonify(access_token=access_token)
+
+    return jsonify(response_body), 200

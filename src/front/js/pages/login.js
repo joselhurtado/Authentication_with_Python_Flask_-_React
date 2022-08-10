@@ -7,13 +7,12 @@ export const Login = () => {
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
   const token = sessionStorage.getItem("token");
+  console.log('This is your token', token);
 
   const handleClick = () => {
-    console.log(email,"email", password, "Password");
+    console.log(email,"Email", password, "Password");
 
-    fetch(
-      "https://3001-4geeksacade-reactflaskh-xpm8eu1lzpr.ws-us59.gitpod.io/api/token",
-      {
+    const opts = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -21,9 +20,11 @@ export const Login = () => {
         body: JSON.stringify({
           email: email,
           password: password,
-        }),
-      }
-    )
+        })
+    };
+
+    fetch(
+      "https://3001-joselhurtad-jwtauthwith-7690lnephyr.ws-us59.gitpod.io/api/token", opts)
       .then((resp) => {
         if (resp.status === 200) return resp.json();
         else alert("There has been some error");
