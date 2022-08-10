@@ -1,5 +1,7 @@
 # WebApp JWT Auth with Python Flask React
 
+<img src='/docs/assets/protected-image.png' />
+
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-flask-hello.git)
 
 > Documentation: https://start.4geeksacademy.com/
