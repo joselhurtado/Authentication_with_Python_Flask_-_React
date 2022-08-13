@@ -42,30 +42,33 @@ export const Login = () => {
   };
 
   return (
-    <div className="container-sm text-center mt-5">
+    <div className="text-center mt-5">
       <h1>LOGIN</h1>
       {token && token != "" && token != undefined ? (
         "You are logged in with this token" + token
       ) : (
-        <div>
-          <input
-            type="text"
-            placeholder="Your Email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Your Password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-          <div className="btn btn-primary">
-            <div onClick={handleClick}>
-              Login
-            </div>
-          </div>
-        </div>
+        <form>
+          <div className="form-group mt-5">
+              <input className="col-3"
+                type="text"
+                placeholder="Your Email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+              />
+              </div><div className="form-group">
+                <input className="col-3"
+                  type="password"
+                  placeholder="Your Password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                />
+                </div>
+                  <div className="col-3 form-group btn btn-primary">
+                    <div onClick={handleClick}>
+                      Login
+                    </div>
+                  </div>
+        </form> 
       )}
     </div>
   );

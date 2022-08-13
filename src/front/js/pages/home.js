@@ -9,10 +9,10 @@ export const Home = () => {
 	return (
 		<div className="container-sm text-center mt-5">
 			<h1>JWT Authentication Python, Flask and React</h1>
-			<p>
+			<p className='mt-5'>
 				<img src={ImageUrl} />
 			</p>
-			<div className="alert alert-info">
+			<div className="mt-5 alert alert-info">
 				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
 			</div>
 			<p>
