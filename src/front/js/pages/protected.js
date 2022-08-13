@@ -6,7 +6,7 @@ export const Protected = () => {
   const { store, actions } = useContext(Context);
   const [isLogin, setIsLogin] = useState(false);
   const token = sessionStorage.getItem("token");
-  console.log("This is your token", token);
+  console.log("This is your token", token); //Display Token on Frontend
 
   const opts = {
     method: "GET",
@@ -15,15 +15,15 @@ export const Protected = () => {
     },
   };
 
-  //Fetch need to be place on flux
+  useEffect(() => {     //Use Effect Edits
   fetch(
-    "https://3001-joselhurtad-jwtauthwith-7690lnephyr.ws-us59.gitpod.io/api/protected", 
+    `${process.env.BACKEND_URL}/api/protected`, //New URL path route
     opts
   )
     .then((response) => response.status === 200 ? setIsLogin(true): "")
     .catch((err) => console.error(err));
-
-  useEffect(() => {console.log(token)}, [token])            //Use Effect WIP
+  
+}, [token])           
 
   return (
     <div className="text-center mt-5">

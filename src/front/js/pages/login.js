@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../styles/home.css";
 
 export const Login = () => {
@@ -9,6 +9,7 @@ export const Login = () => {
   const [ password, setPassword ] = useState("");
   const token = sessionStorage.getItem("token");
   console.log('This is your token', token);
+  const navigate = useNavigate();
 
   const handleClick = () => {
     console.log(email,"Email", password, "Password");
@@ -25,7 +26,7 @@ export const Login = () => {
     };
 
     fetch(
-      "https://3001-joselhurtad-jwtauthwith-7690lnephyr.ws-us59.gitpod.io/api/token", opts)
+      `${process.env.BACKEND_URL}/api/token`, opts)
       .then((resp) => {
         if (resp.status === 200) return resp.json();
         else alert("There has been some error");
@@ -33,6 +34,7 @@ export const Login = () => {
       .then((data) => {
         console.log("this came from the backend", data);
         sessionStorage.setItem("token", data.access_token);
+        navigate('/protected');
       })
       .catch((error) => {
         console.error("There was an Error!!!", error);
@@ -58,11 +60,11 @@ export const Login = () => {
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
-          <Link to={`/protected`} className="btn btn-primary">
+          <div className="btn btn-primary">
             <div onClick={handleClick}>
               Login
             </div>
-          </Link>
+          </div>
         </div>
       )}
     </div>
