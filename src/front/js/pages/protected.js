@@ -26,7 +26,7 @@ export const Protected = () => {
 }, [token])           
 
   return (
-    <div className="text-center mt-5">
+    <div className="container-sm text-center mt-5">
       <h1>LOGIN PROTECTED</h1>
       {isLogin ? (
         "You are logged in with this token" + token
