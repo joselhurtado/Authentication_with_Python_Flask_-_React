@@ -19,11 +19,19 @@ def create_token():
     email = request.json.get("email", None)
     print(email, "email")
     password = request.json.get("password", None)
-    if email != "test" or password != "test":
-        return jsonify({"msg": "Bad email or password"}), 401
-
+    # if email != "test" or password != "test":
+    #     return jsonify({"msg": "Bad email or password"}), 401
     access_token = create_access_token(identity=email)
-    return jsonify(access_token=access_token)
+    return jsonify({access_token})
+
+@api.route("/register", methods=["POST"])
+def register():
+    payload = request.get_json()
+    user = User(email=payload["email"], password=payload["password"], is_active=True)
+    db.session.add(user)
+    db.session.commit()
+
+    return "User Succefully Added"
 
 # Protect a route with jwt_required, which will kick out requests
 # without a valid JWT present.

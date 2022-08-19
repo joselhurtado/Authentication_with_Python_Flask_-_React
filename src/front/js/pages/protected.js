@@ -6,7 +6,7 @@ export const Protected = () => {
   const { store, actions } = useContext(Context);
   const [isLogin, setIsLogin] = useState(false);
   const token = sessionStorage.getItem("token");
-  console.log("This is your token", token); //Display Token on Frontend
+  // console.log("This is your token", token); //Display Token on Frontend
 
   const opts = {
     method: "GET",
@@ -22,19 +22,15 @@ export const Protected = () => {
   )
     .then((response) => response.status === 200 ? setIsLogin(true): "")
     .catch((err) => console.error(err));
-  
 }, [token])           
 
   return (
     <div className="container text-center mt-5">
       <h1>LOGIN PROTECTED CONTENT</h1>
-      {isLogin ? (
-        "You are logged in with this token" + token
-      ) : (
+
         <div className='mt-5 p-3 mb-2 bg-warning text-dark'>
-          <h4>You need to Login</h4>
+          <h4>You need to Login to access</h4>
         </div>
-      )}
     </div>
   );
 };

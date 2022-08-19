@@ -3,7 +3,7 @@ import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import "../../styles/home.css";
 
-export const Login = () => {
+export const Register = () => {
   const { store, actions } = useContext(Context);
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
@@ -29,7 +29,7 @@ export const Login = () => {
       `${process.env.BACKEND_URL}/api/token`, opts)
       .then((resp) => {
         if (resp.status === 200) return resp.json();
-        // else alert("There has been some error");
+        else alert("There has been some error");
       })
       .then((data) => {
         console.log("this came from the backend", data);
@@ -43,7 +43,7 @@ export const Login = () => {
 
   return (
     <div className="text-center mt-5">
-      <h1>LOGIN</h1>
+      <h1>REGISTER</h1>
         <form>
           <div className="form-group mt-5">
               <input className="col-3"
@@ -60,9 +60,9 @@ export const Login = () => {
                   onChange={e => setPassword(e.target.value)}
                 />
                 </div>
-                  <div className="col-3 form-group btn btn-primary">
+                  <div className="col-3 form-group btn btn-warning">
                     <div onClick={handleClick}>
-                      Login
+                     Sign Up
                     </div>
                   </div>
         </form> 
