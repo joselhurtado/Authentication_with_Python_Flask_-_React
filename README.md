@@ -2,12 +2,6 @@
 
 <img src="/src/front/img/jwt_aut.png" />
 
-- Pending Create User Routes and Class on the Backend
-- Setup DB and Sync with Frontend
-- User could be able to Login (Using on Data), Store login, and preview protected content
-
-<img src='/docs/assets/protected-image.png' />
-
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-flask-hello.git)
 
 > Documentation: https://start.4geeksacademy.com/
