@@ -1,4 +1,6 @@
-# WebApp JWT Auth with Python Flask React
+# WebApp JWT Auth with Python Flask React (Working Aug 19th)
+
+<img src="/src/front/img/jwt_aut.png" />
 
 - Pending Create User Routes and Class on the Backend
 - Setup DB and Sync with Frontend
