@@ -16,13 +16,19 @@ api = Blueprint('api', __name__)
 # create_access_token() function is used to actually generate the JWT.
 @api.route("/token", methods=["POST"])
 def create_token():
-    email = request.json.get("email", None)
-    print(email, "email")
-    password = request.json.get("password", None)
-    # if email != "test" or password != "test":
-    #     return jsonify({"msg": "Bad email or password"}), 401
-    access_token = create_access_token(identity=email)
-    return jsonify({access_token})
+    data = request.get_json()
+    email = data["email"]
+    password = data["password"]
+    user = User.query.filter(User.email == data["email"]).first()
+
+    if user:
+        return jsonify({"msg": "Correct email"}), 200
+    else:
+        return jsonify({"msg": "Bad email"}), 400
+    # else:
+    #     access_token = create_access_token(identity=email)
+    #     return jsonify({access_token})
+    return "success"
 
 @api.route("/register", methods=["POST"])
 def register():
@@ -30,8 +36,8 @@ def register():
     user = User(email=payload["email"], password=payload["password"], is_active=True)
     db.session.add(user)
     db.session.commit()
-
-    return "User Succefully Added"
+    
+    return jsonify("User Succefully Added")
 
 # Protect a route with jwt_required, which will kick out requests
 # without a valid JWT present.

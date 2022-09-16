@@ -7,8 +7,6 @@ export const Register = () => {
   const { store, actions } = useContext(Context);
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
-  const token = sessionStorage.getItem("token");
-  console.log('This is your token', token);
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -26,15 +24,10 @@ export const Register = () => {
     };
 
     fetch(
-      `${process.env.BACKEND_URL}/api/token`, opts)
+      `${process.env.BACKEND_URL}/api/register`, opts)
       .then((resp) => {
         if (resp.status === 200) return resp.json();
         else alert("There has been some error");
-      })
-      .then((data) => {
-        console.log("this came from the backend", data);
-        sessionStorage.setItem("token", data);
-        navigate('/protected');
       })
       .catch((error) => {
         console.error("There was an Error!!!", error);
