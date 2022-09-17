@@ -29,6 +29,9 @@ export const Register = () => {
         if (resp.status === 200) return resp.json();
         else alert("There has been some error");
       })
+      .then((data) => {
+        alert(data.msg)
+      })
       .catch((error) => {
         console.error("There was an Error!!!", error);
       });

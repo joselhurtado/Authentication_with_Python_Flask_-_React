@@ -22,13 +22,10 @@ def create_token():
     user = User.query.filter(User.email == data["email"]).first()
 
     if user:
-        return jsonify({"msg": "Correct email"}), 200
+        access_token = create_access_token(identity=email)
+        return jsonify({access_token})
     else:
         return jsonify({"msg": "Bad email"}), 400
-    # else:
-    #     access_token = create_access_token(identity=email)
-    #     return jsonify({access_token})
-    return "success"
 
 @api.route("/register", methods=["POST"])
 def register():
@@ -37,7 +34,7 @@ def register():
     db.session.add(user)
     db.session.commit()
     
-    return jsonify("User Succefully Added")
+    return jsonify({"msg": "User Succefully Added"})
 
 # Protect a route with jwt_required, which will kick out requests
 # without a valid JWT present.
